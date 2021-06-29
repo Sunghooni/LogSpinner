@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [HideInInspector] public GameObject holdingLog;
-    [HideInInspector] public bool isholding;
+    [HideInInspector]
+    public GameObject holdingLog;
 
-    private bool isExited = true;
+    [HideInInspector]
+    public bool isholding;
+
+    private GameObject spinner;
+    private Vector3 rotateAxis;
+
     private float moveSpeed = 10f;
     private const float maxMoveSpeed = 15f;
     private const float minMoveSpeed = 5f;
-    private Vector3 rotateAxis;
 
     private void Update()
     {
@@ -41,6 +45,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isholding)
         {
             isholding = false;
+            transform.SetParent(null);
         }
     }
 
@@ -53,7 +58,7 @@ public class PlayerMove : MonoBehaviour
     {
         float logRadius = holdingLog.transform.localScale.x;
 
-        transform.RotateAround(holdingLog.transform.position, rotateAxis, moveSpeed / logRadius);
+        spinner.transform.Rotate(rotateAxis * moveSpeed / logRadius);
     }
 
     private void SpeedManage()
@@ -61,14 +66,6 @@ public class PlayerMove : MonoBehaviour
         float speedChangeValue = isholding ? Time.deltaTime * 1.5f : Time.deltaTime * -2f;
 
         moveSpeed = Mathf.Clamp(moveSpeed + speedChangeValue, minMoveSpeed, maxMoveSpeed);
-    }
-
-    private void CatchLog(GameObject log)
-    {
-        log.transform.GetComponent<Log>().isUsed = true;
-        holdingLog = log;
-        isholding = true;
-        isExited = false;
     }
 
     private void ChangeMoveDir()
@@ -83,24 +80,22 @@ public class PlayerMove : MonoBehaviour
         rotateAxis = holdingLog.transform.up * rotateDir;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void CatchLog(GameObject log)
     {
-        if (collision.transform.CompareTag("Log"))
-        {
-            if (!isholding && isExited)
-            {
-                CatchLog(collision.gameObject);
-                ChangeMoveDir();
-            }
-        }
+        log.transform.GetComponent<Log>().isUsed = true;
+        holdingLog = log;
+        isholding = true;
+
+        spinner = holdingLog.transform.Find("Spinner").gameObject;
+        transform.SetParent(spinner.transform);
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (holdingLog == collision.gameObject)
+        if (collision.transform.CompareTag("Log") && !isholding)
         {
-            isExited = true;
-            holdingLog = null;
+            CatchLog(collision.gameObject);
+            ChangeMoveDir();
         }
     }
 }
