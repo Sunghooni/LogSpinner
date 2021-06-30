@@ -31,6 +31,7 @@ public class PlayerCam : MonoBehaviour
     private void FollowPlayer()
     {
         Vector3 toPos = target.transform.position + target.transform.up * heightDist;
+        toPos.x = transform.position.x;
 
         transform.position = Vector3.Lerp(transform.position, toPos, lerpSpeed);
     }

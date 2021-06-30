@@ -24,6 +24,7 @@ public class PlayerLife : MonoBehaviour
         {
             GameObject part = brokenParts.transform.GetChild(i).gameObject;
             part.SetActive(true);
+            part.GetComponent<Rigidbody>().AddExplosionForce(5f, brokenParts.transform.position, 1f, 0f, ForceMode.Impulse);
         }
     }
 }
