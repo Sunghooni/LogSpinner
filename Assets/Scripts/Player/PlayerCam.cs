@@ -19,9 +19,18 @@ public class PlayerCam : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerMove = player.GetComponent<PlayerMove>();
         target = player.transform;
-
         startPos = transform.position;
-        finalLog = GameObject.FindGameObjectWithTag("FinalLog").transform;
+
+        //Find Final Log
+        GameObject[] logs = GameObject.FindGameObjectsWithTag("Log");
+
+        for (int i = 0; i < logs.Length; i++)
+        {
+            if (i == 0 || finalLog.position.z < logs[i].transform.position.z)
+            {
+                finalLog = logs[i].transform;
+            }
+        }
     }
 
     private void Update()
