@@ -8,6 +8,9 @@ public class PlayerCam : MonoBehaviour
     private PlayerMove playerMove;
     private Transform target;
 
+    private Vector3 startPos;
+    private Transform finalLog;
+
     private const float heightDist = 20f;
     private const float lerpSpeed = 0.1f;
 
@@ -16,6 +19,9 @@ public class PlayerCam : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerMove = player.GetComponent<PlayerMove>();
         target = player.transform;
+
+        startPos = transform.position;
+        finalLog = GameObject.FindGameObjectWithTag("FinalLog").transform;
     }
 
     private void Update()
@@ -31,6 +37,7 @@ public class PlayerCam : MonoBehaviour
     private void FollowPlayer()
     {
         Vector3 toPos = target.transform.position + target.transform.up * heightDist;
+        toPos.z = Mathf.Clamp(toPos.z, startPos.z, finalLog.transform.position.z);
         toPos.x = transform.position.x;
 
         transform.position = Vector3.Lerp(transform.position, toPos, lerpSpeed);
