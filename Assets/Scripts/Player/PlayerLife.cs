@@ -26,5 +26,12 @@ public class PlayerLife : MonoBehaviour
             part.SetActive(true);
             part.GetComponent<Rigidbody>().AddExplosionForce(5f, brokenParts.transform.position, 1f, 0f, ForceMode.Impulse);
         }
+
+        Invoke(nameof(ReloadScene), 1f);
+    }
+
+    private void ReloadScene()
+    {
+        FinishManager.instance.LoadScene("Tutorial");
     }
 }
