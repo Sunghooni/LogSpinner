@@ -33,7 +33,7 @@ public class InGameUI : MonoBehaviour
 
         if (!playerLife.isDead)
         {
-            FinishManager.instance.LoadScene("Tutorial");
+            LoadManager.instance.LoadScene("Main");
         }
     }
 

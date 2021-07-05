@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class FinishManager : MonoBehaviour
+public class LoadManager : MonoBehaviour
 {
-    public static FinishManager instance;
+    public static LoadManager instance;
     public GameObject blackPanel;
     public GameObject inGameUI;
 
@@ -15,7 +15,7 @@ public class FinishManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = GetComponent<FinishManager>();
+        instance = GetComponent<LoadManager>();
     }
 
     private void Start()

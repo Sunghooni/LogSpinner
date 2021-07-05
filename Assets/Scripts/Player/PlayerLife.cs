@@ -32,6 +32,6 @@ public class PlayerLife : MonoBehaviour
 
     private void ReloadScene()
     {
-        FinishManager.instance.LoadScene("Tutorial");
+        LoadManager.instance.LoadScene("Tutorial");
     }
 }

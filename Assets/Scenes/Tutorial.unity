@@ -4988,7 +4988,7 @@ GameObject:
   - component: {fileID: 2145159745}
   - component: {fileID: 2145159744}
   m_Layer: 0
-  m_Name: FinishManager
+  m_Name: LoadManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

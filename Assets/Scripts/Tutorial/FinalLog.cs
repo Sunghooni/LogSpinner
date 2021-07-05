@@ -39,6 +39,6 @@ public class FinalLog : MonoBehaviour
 
     private void LoadStageScene()
     {
-        FinishManager.instance.LoadScene("Tutorial");
+        LoadManager.instance.LoadScene("Tutorial");
     }
 }
