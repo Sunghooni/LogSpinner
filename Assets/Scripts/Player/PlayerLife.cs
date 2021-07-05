@@ -17,6 +17,7 @@ public class PlayerLife : MonoBehaviour
 
     private void DeathMotion()
     {
+        SoundManager.instance.PlaySound("Broken", brokenParts);
         brokenParts.transform.SetParent(null);
         gameObject.SetActive(false);
 

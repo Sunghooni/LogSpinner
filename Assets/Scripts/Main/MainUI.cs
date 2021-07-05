@@ -4,18 +4,32 @@ using UnityEngine;
 
 public class MainUI : MonoBehaviour
 {
+    private bool isChanging = false;
+
     public void StageButtonOnclicked()
     {
-        LoadManager.instance.LoadScene("Stage");
+        if (!isChanging)
+        {
+            LoadManager.instance.LoadScene("Stage");
+            isChanging = true;
+        }
     }
 
     public void OptionButtonOnclicked()
     {
-        LoadManager.instance.LoadScene("Option");
+        if (!isChanging)
+        {
+            LoadManager.instance.LoadScene("Option");
+            isChanging = true;
+        }
     }
 
     public void ExitButtonOnclicked()
     {
-        Application.Quit();
+        if (!isChanging)
+        {
+            Application.Quit();
+            isChanging = true;
+        }
     }
 }

@@ -46,6 +46,7 @@ public class PlayerMove : MonoBehaviour
         {
             isholding = false;
             transform.SetParent(null);
+            SoundManager.instance.PlaySound("Throw", gameObject);
         }
     }
 
@@ -82,6 +83,7 @@ public class PlayerMove : MonoBehaviour
 
     private void CatchLog(GameObject log)
     {
+        SoundManager.instance.PlaySound("Catch", gameObject);
         log.transform.GetComponent<Log>().isUsed = true;
         holdingLog = log;
         isholding = true;

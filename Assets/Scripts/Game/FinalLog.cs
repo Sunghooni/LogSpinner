@@ -22,6 +22,7 @@ public class FinalLog : MonoBehaviour
 
             finishing = true;
             playerMove.isInputable = false;
+            SoundManager.instance.PlaySound("Ring", gameObject);
         }
     }
 
@@ -39,6 +40,6 @@ public class FinalLog : MonoBehaviour
 
     private void LoadStageScene()
     {
-        LoadManager.instance.LoadScene("Tutorial");
+        LoadManager.instance.LoadScene("Stage");
     }
 }
