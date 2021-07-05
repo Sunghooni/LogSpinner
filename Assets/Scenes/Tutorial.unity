@@ -2868,7 +2868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6dd026e0fd5f0b46a77a7d750a992dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMove: {fileID: 1247966668}
+  player: {fileID: 1247966666}
   pausePanel: {fileID: 337347542}
   selections: {fileID: 1880138579}
 --- !u!1001 &1203544271
@@ -2946,13 +2946,19 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1697206172}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1247966666 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1861842364902973839, guid: ce5c4da6346466d40b2e7402521926d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1702883609}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1247966668 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1861842364902973834, guid: ce5c4da6346466d40b2e7402521926d0,
     type: 3}
   m_PrefabInstance: {fileID: 1702883609}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1247966666}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a36913afa84efc0468392ab9d5979911, type: 3}

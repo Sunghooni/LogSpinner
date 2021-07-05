@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class InGameUI : MonoBehaviour
 {
-    public PlayerMove playerMove;
+    public GameObject player;
     public GameObject pausePanel;
     public GameObject selections;
+
+    private PlayerMove playerMove;
+    private PlayerLife playerLife;
+
+    private void Awake()
+    {
+        playerMove = player.GetComponent<PlayerMove>();
+        playerLife = player.GetComponent<PlayerLife>();
+    }
 
     public void PauseButtonOnclicked()
     {
@@ -20,8 +29,12 @@ public class InGameUI : MonoBehaviour
 
     public void ExitButtonOnclicked()
     {
-        Time.timeScale = 1f;
-        FinishManager.instance.LoadScene("Tutorial");
+        BackButtonOnclicked();
+
+        if (!playerLife.isDead)
+        {
+            FinishManager.instance.LoadScene("Tutorial");
+        }
     }
 
     public void BackButtonOnclicked()
