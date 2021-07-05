@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class FinalLog : MonoBehaviour
 {
+    public PlayerMove playerMove;
+
     private Log log;
     private bool finishing = false;
 
@@ -17,7 +19,9 @@ public class FinalLog : MonoBehaviour
         if (IsFinished() && !finishing)
         {
             Invoke(nameof(LoadStageScene), 1f);
+
             finishing = true;
+            playerMove.isInputable = false;
         }
     }
 

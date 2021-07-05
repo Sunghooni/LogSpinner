@@ -8,6 +8,7 @@ public class FinishManager : MonoBehaviour
 {
     public static FinishManager instance;
     public GameObject blackPanel;
+    public GameObject inGameUI;
 
     private string targetScene;
     private bool isBlackOuted = false;
@@ -42,6 +43,8 @@ public class FinishManager : MonoBehaviour
         Image image = blackPanel.GetComponent<Image>();
         image.color = image.color = new Color(image.color.r, image.color.g, image.color.b, 0);
 
+        inGameUI.SetActive(false);
+
         while (image.color.a < 1)
         {
             float alpha = Mathf.Clamp(image.color.a + Time.deltaTime * speed, 0, 1);
@@ -67,5 +70,7 @@ public class FinishManager : MonoBehaviour
 
             yield return null;
         }
+
+        inGameUI.SetActive(true);
     }
 }

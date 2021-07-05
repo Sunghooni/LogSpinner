@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [HideInInspector]
-    public GameObject holdingLog;
-
-    [HideInInspector]
-    public bool isholding;
+    [HideInInspector] public GameObject holdingLog;
+    [HideInInspector] public bool isholding;
+    [HideInInspector] public bool isInputable;
 
     private GameObject spinner;
     private Vector3 rotateAxis;
@@ -42,6 +40,8 @@ public class PlayerMove : MonoBehaviour
 
     private void InputManage()
     {
+        if (!isInputable) return;
+
         if (Input.GetKeyDown(KeyCode.Space) && isholding)
         {
             isholding = false;
