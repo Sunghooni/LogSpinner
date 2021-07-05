@@ -3231,6 +3231,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdingLog: {fileID: 0}
   isholding: 0
+  isInputable: 1
 --- !u!114 &1861842364902973832
 MonoBehaviour:
   m_ObjectHideFlags: 0
