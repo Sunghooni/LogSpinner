@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -42,11 +43,21 @@ public class PlayerMove : MonoBehaviour
     {
         if (!isInputable || !isholding) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             isholding = false;
             transform.SetParent(null);
             SoundManager.instance.PlaySound("Throw", gameObject);
+        }
+
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        {
+            if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
+            {
+                isholding = false;
+                transform.SetParent(null);
+                SoundManager.instance.PlaySound("Throw", gameObject);
+            }
         }
     }
 

@@ -21,6 +21,7 @@ public class InGameUI : MonoBehaviour
     {
         if (!selections.activeSelf)
         {
+            SoundManager.instance.PlaySound("Button", Camera.main.gameObject);
             Time.timeScale = 0f;
             selections.SetActive(true);
             playerMove.isInputable = false;
@@ -29,6 +30,7 @@ public class InGameUI : MonoBehaviour
 
     public void ExitButtonOnclicked()
     {
+        SoundManager.instance.PlaySound("Button", Camera.main.gameObject);
         BackButtonOnclicked();
 
         if (!playerLife.isDead)
@@ -39,6 +41,7 @@ public class InGameUI : MonoBehaviour
 
     public void BackButtonOnclicked()
     {
+        SoundManager.instance.PlaySound("Button", Camera.main.gameObject);
         Time.timeScale = 1f;
         selections.SetActive(false);
         playerMove.isInputable = true;

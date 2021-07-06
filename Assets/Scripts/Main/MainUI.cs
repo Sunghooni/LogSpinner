@@ -10,6 +10,7 @@ public class MainUI : MonoBehaviour
     {
         if (!isChanging)
         {
+            SoundManager.instance.PlaySound("Button", Camera.main.gameObject);
             LoadManager.instance.LoadScene("Stage");
             isChanging = true;
         }
@@ -17,8 +18,11 @@ public class MainUI : MonoBehaviour
 
     public void OptionButtonOnclicked()
     {
+        return;
+
         if (!isChanging)
         {
+            SoundManager.instance.PlaySound("Button", Camera.main.gameObject);
             LoadManager.instance.LoadScene("Option");
             isChanging = true;
         }
