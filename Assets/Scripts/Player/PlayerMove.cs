@@ -40,9 +40,9 @@ public class PlayerMove : MonoBehaviour
 
     private void InputManage()
     {
-        if (!isInputable) return;
+        if (!isInputable || !isholding) return;
 
-        if (Input.GetKeyDown(KeyCode.Space) && isholding)
+        if (Input.GetKeyDown(KeyCode.Space) || Input.touchCount > 0)
         {
             isholding = false;
             transform.SetParent(null);
